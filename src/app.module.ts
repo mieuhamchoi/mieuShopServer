@@ -1,13 +1,15 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-//database connect use mysql2
-import { DatabaseConnection } from './database.providers';
+//user modules
+import { UserModule } from './modules/user/user.module';
 
 @Module({
-  imports: [],
+  imports: [UserModule],
   controllers: [AppController],
-  providers: [AppService, DatabaseConnection],
+  providers: [
+    AppService,
+  ]
 })
 export class AppModule {}

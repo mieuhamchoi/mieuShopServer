@@ -15,6 +15,6 @@ export class DatabaseConnection {
   }
 
   getConnection(): Connection {
-    return this.connection;
+      return this.connection;
   }
 }
