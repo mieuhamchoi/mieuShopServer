@@ -62,6 +62,7 @@ export class UserController {
     async createUser(@Res() response, @Body() body) {
         // pick dream field
         let newUser = pick(body, ['name', 'numberPhone', 'userName', 'password']);
+        
         // validate field
         if (!this.validateUser(newUser)) {
             return response.status(400).json({
@@ -69,6 +70,7 @@ export class UserController {
                 message: "Data type not standard"
             })
         }
+
         // call service create user
         await this.userService.createUser(newUser).then(insertId => {
             if(!insertId) {
